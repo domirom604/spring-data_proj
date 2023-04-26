@@ -1,16 +1,16 @@
 package pl.polsl.aei.ior.springdata;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/students")
-public class StudentAPI {
+@RequestMapping("/kierunki")
+public class KierunekAPI {
      
-    @GetMapping("/getStud")
+    @GetMapping("/getKierunki")
     String hello()
     {  
-        return "Hello tutaj sa studenci!!!";
+        return "Hello tsą kierunki stud!!!";
     }
 }

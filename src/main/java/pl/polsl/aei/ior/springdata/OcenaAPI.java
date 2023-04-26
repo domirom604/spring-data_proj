@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/students")
-public class StudentAPI {
+@RequestMapping("/oceny")
+public class OcenaAPI {
      
-    @GetMapping("/getStud")
+    @GetMapping("/getOceny")
     String hello()
     {  
-        return "Hello tutaj sa studenci!!!";
+        return "Hello tutaj sa fajne oceny!!!";
     }
 }

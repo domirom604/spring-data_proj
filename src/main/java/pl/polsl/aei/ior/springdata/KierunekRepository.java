@@ -1,6 +1,7 @@
 package pl.polsl.aei.ior.springdata;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StudentRepository extends JpaRepository<Student, Long>{
+public interface KierunekRepository extends JpaRepository<Kierunek, Long>{
     
 }
+
