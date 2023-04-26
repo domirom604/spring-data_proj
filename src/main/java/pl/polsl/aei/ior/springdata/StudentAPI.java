@@ -19,6 +19,6 @@ public class StudentAPI {
     @GetMapping("/hello")
     String hello()
     {  
-        return "Hello world";
+        return "Hello worlds";
     }
 }
