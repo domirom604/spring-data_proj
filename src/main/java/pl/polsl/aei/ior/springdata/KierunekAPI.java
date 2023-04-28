@@ -5,12 +5,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/kierunki")
+@RequestMapping("/uczelnia")
 public class KierunekAPI {
      
     @GetMapping("/getKierunki")
     String hello()
     {  
-        return "Hello tsą kierunki stud!!!";
+        return "Hello tu są kierunki stud!!!";
+    }
+    
+    @GetMapping("/delKierunek")
+    String delete()
+    {  
+        return "Usuwam kierunek stud!!!";
     }
 }

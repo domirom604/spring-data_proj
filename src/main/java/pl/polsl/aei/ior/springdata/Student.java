@@ -2,8 +2,11 @@ package pl.polsl.aei.ior.springdata;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="studenci")
@@ -15,6 +18,12 @@ public class Student {
     private String plec;
     private long nrKier; 
     
+    @ManyToMany(mappedBy = "studenci")
+    private Set<Kierunek> kierunki = new HashSet<>();
+    
+    @ManyToMany(mappedBy = "studenci")
+    private Set<Ocena> oceny = new HashSet<>();
+    
     public Student() {
     }
 
@@ -24,7 +33,22 @@ public class Student {
         this.plec = plec;
         this.nrKier = nrKier;
     }
+    
+    public Set<Kierunek> getKierunki() {
+        return kierunki;
+    }
 
+    public void setKierunki(Set<Kierunek> kierunki) {
+        this.kierunki = kierunki;
+    }
+    
+     public Set<Ocena> getOceny() {
+        return oceny;
+    }
+
+    public void setOceny(Set<Ocena> oceny) {
+        this.oceny = oceny;
+    }
     @Override
     public String toString() {
         return ("Nazwisko: "+ nazwisko  + " " + "plec:" + plec + " " + "numer kierunku:" + nrKier + "/");
