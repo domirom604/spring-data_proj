@@ -1,4 +1,4 @@
-package pl.polsl.aei.ior.springdata;
+package pl.polsl.aei.ior.springdata.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package pl.polsl.aei.ior.springdata;
+package pl.polsl.aei.ior.springdata.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
