@@ -1,36 +1,28 @@
 package pl.polsl.aei.ior.springdata.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="kierunki")
+@Table(name = "kierunki")
 
 public class Kierunek {
-    
-    @Id long nrKierunku;
-    @ManyToMany(
-        cascade = {CascadeType.MERGE, CascadeType.PERSIST}
-    )
-    @JoinTable(
-        name = "kierunki_studenci",
-        joinColumns = @JoinColumn(name = "kierunki_id"),
-        inverseJoinColumns = @JoinColumn(name = "studenci_id")
-    )
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "NR_KIER", nullable = false)
+    private int id;
+
+    @OneToMany(mappedBy = "kierunek")
     private Set<Student> studenci = new HashSet<>();
-    
-    private String nazwaKierunku;
-    private long nrInstytucji; 
-    
+
+    private String nazwaKier;
+    private int nrInst;
+
     public Kierunek() {
     }
+
     public Set<Student> getStudenci() {
         return studenci;
     }
@@ -38,28 +30,35 @@ public class Kierunek {
     public void setStudenci(Set<Student> studenci) {
         this.studenci = studenci;
     }
-    
-    public long getId() {
-        return nrKierunku;
+
+    public String getNazwaKier() {
+        return nazwaKier;
     }
 
-    public void setId(long nrKierunku) {
-        this.nrKierunku = nrKierunku;
-    }
-    
-    public String getNazwaKierunku() {
-        return nazwaKierunku;
+    public void setNazwaKier(String nazwaKier) {
+        this.nazwaKier = nazwaKier;
     }
 
-    public void setNazwaKierunku(String nazwaKierunku) {
-        this.nazwaKierunku = nazwaKierunku;
-    }
-    
     public long getNrInstytucji() {
-        return nrInstytucji;
+        return nrInst;
     }
 
-    public void setNrInstytucji(long nrInstytucji) {
-        this.nrInstytucji = nrInstytucji;
+    public void setNrInst(int nrInst) {
+        this.nrInst = nrInst;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return ("nr_kier: " + id + " "
+                + "nazwa kierunku: " + nazwaKier + " "
+                + "studenci: " + studenci);
     }
 }
