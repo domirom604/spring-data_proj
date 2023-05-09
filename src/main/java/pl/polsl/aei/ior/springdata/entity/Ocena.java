@@ -1,71 +1,51 @@
 package pl.polsl.aei.ior.springdata.entity;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(name="oceny")
+@Table(name = "oceny")
 
 public class Ocena {
-    @Id long nrStud;
-    @ManyToMany(
-        cascade = {CascadeType.MERGE, CascadeType.PERSIST}
-    )
-    @JoinTable(
-        name = "oceny_studenci",
-        joinColumns = @JoinColumn(name = "oceny_id"),
-        inverseJoinColumns = @JoinColumn(name = "studenci_id")
-    )
-    private Set<Student> studenci = new HashSet<>();
-    
-    private long nrPrzedmiotu;
-    private Date dataZaliczenia;
-    private int termin; 
-    private boolean zalEgzaminu;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "NR_STUD")
+    @JsonIgnore
+    private Student student;
+
+    private long nrPrzedm;
+    private Date dataZal;
+    private int termin;
+    private boolean zalEgz;
     private int ocena;
-    
+
     public Ocena() {
     }
-    
-    public Set<Student> getStudenci() {
-        return studenci;
+
+    public long getNrPrzedm() {
+        return nrPrzedm;
     }
 
-    public void setStudenci(Set<Student> studenci) {
-        this.studenci = studenci;
-    }
-    public long getId() {
-        return nrStud;
+    public void setNrPrzedm(long nrPrzedm) {
+        this.nrPrzedm = nrPrzedm;
     }
 
-    public void setId(long nrStud) {
-        this.nrStud = nrStud;
+    public Date getDataZal() {
+        return dataZal;
     }
 
-    public long getNrPrzedmiotu() {
-        return nrPrzedmiotu;
+    public void setDataZal(Date dataZal) {
+        this.dataZal = dataZal;
     }
 
-    public void setNrPrzedmiotu(long nrPrzedmiotu) {
-        this.nrPrzedmiotu = nrPrzedmiotu;
-    }
 
-    public Date getDataZaliczenia() {
-        return dataZaliczenia;
-    }
-
-    public void setDataZaliczenia(Date dataZaliczenia) {
-        this.dataZaliczenia = dataZaliczenia;
-    }
-
-    
     public int getTermin() {
         return termin;
     }
@@ -73,20 +53,36 @@ public class Ocena {
     public void setTermin(int termin) {
         this.termin = termin;
     }
-    
-    public boolean getZalEgzaminu() {
-        return zalEgzaminu;
+
+    public boolean getZalEgz() {
+        return zalEgz;
     }
 
-    public void setZalEgzaminu(boolean zalEgzaminu) {
-        this.zalEgzaminu = zalEgzaminu;
+    public void setZalEgz(boolean zalEgz) {
+        this.zalEgz = zalEgz;
     }
-    
-     public int getOcena() {
+
+    public int getOcena() {
         return ocena;
     }
 
     public void setOcena(int ocena) {
         this.ocena = ocena;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

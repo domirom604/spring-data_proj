@@ -26,6 +26,9 @@ public class Student {
     @JsonIgnore
     private Kierunek kierunek;
 
+    @OneToMany(mappedBy = "student")
+    private Set<Ocena> oceny = new HashSet<>();
+
     public Student() {
     }
 
@@ -78,6 +81,22 @@ public class Student {
 
     public void setKierunek(Kierunek kierunek) {
         this.kierunek = kierunek;
+    }
+
+    public int getNrStud() {
+        return nrStud;
+    }
+
+    public void setNrStud(int nrStud) {
+        this.nrStud = nrStud;
+    }
+
+    public Set<Ocena> getOceny() {
+        return oceny;
+    }
+
+    public void setOceny(Set<Ocena> oceny) {
+        this.oceny = oceny;
     }
 
 }

@@ -17,7 +17,7 @@ public class StudentAPI {
     @Autowired
     StudentRepository studentRepository;
 
-    //http://localhost:8083/studenci
+    //http://localhost:8083/uczelnia/studenci
     @GetMapping()
     List<Student> getAllStudents() {
         return studentRepository.findAll();
