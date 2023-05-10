@@ -20,7 +20,7 @@ public class Ocena {
     @JsonIgnore
     private Student student;
 
-    private long nrPrzedm;
+    private String nrPrzedm;
     private Date dataZal;
     private int termin;
     private boolean zalEgz;
@@ -29,11 +29,11 @@ public class Ocena {
     public Ocena() {
     }
 
-    public long getNrPrzedm() {
+    public String getNrPrzedm() {
         return nrPrzedm;
     }
 
-    public void setNrPrzedm(long nrPrzedm) {
+    public void setNrPrzedm(String nrPrzedm) {
         this.nrPrzedm = nrPrzedm;
     }
 
