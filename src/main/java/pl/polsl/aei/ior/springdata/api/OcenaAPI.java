@@ -56,4 +56,17 @@ public class OcenaAPI {
         nrPrzedPrefix = nrPrzedPrefix + "%";
         return ocenaRepository.findByNrPrzedmLikeIgnoreCase(nrPrzedPrefix);
     }
+    
+    //http://localhost:8083/uczelnia/oceny/ocena/4
+    @GetMapping(value = "ocena/{ocena}")
+    List<Ocena> findGradesByQuery(@PathVariable int ocena) {
+        return ocenaRepository.findGradesWhereOcenaGraterThan(ocena);
+    }
+
+    //Delete!!!
+    //http://localhost:8083/uczelnia/oceny/deleteOcena/id/1
+    @DeleteMapping(value = "deleteOcena/id/{id}")
+    void deleteOcenaById(@PathVariable int id) {
+        ocenaRepository.deleteById(id);
+    }
 }

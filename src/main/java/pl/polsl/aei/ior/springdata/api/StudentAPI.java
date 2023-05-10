@@ -54,5 +54,18 @@ public class StudentAPI {
         nazwiskoPrefix = nazwiskoPrefix + "%";
         return studentRepository.findByNazwiskoLikeIgnoreCase(nazwiskoPrefix);
     }
+    
+    //http://localhost:8083/uczelnia/studenci/nazwiskoGratherThan/3
+    @GetMapping(value = "/nazwiskoGratherThan/{length}")
+    List<Student> findStudentsByQuery(@PathVariable int length) {
+        return studentRepository.findStudentsWhereNameGraterThan(length);
+    }
+
+    //Delete!!!
+    //http://localhost:8083/uczelnia/studenci/deleteStudentById/id/1
+    @DeleteMapping(value = "deleteStudentById/id/{id}")
+    void deleteOcenaById(@PathVariable int id) {
+        studentRepository.deleteById(id);
+    }
 
 }
