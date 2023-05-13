@@ -30,13 +30,13 @@ public class StudentAPI {
     }
 
     //http://localhost:8083/uczelnia/studenci/distinct/nazwisko/Marczak/or/plec/M
-    @GetMapping("distinct/nazwisko/{nazwisko}/or/plec/{plec}")
+    @GetMapping("/distinct/nazwisko/{nazwisko}/or/plec/{plec}")
     List<Student> getDistinctStudentsByNazwiskoAndPlec(@PathVariable String nazwisko, @PathVariable String plec) {
         return studentRepository.findDistinctByNazwiskoAndPlec(nazwisko, plec);
     }
 
     //http://localhost:8083/uczelnia/studenci/v2/nazwisko/MILIONER/plec/K?page=0&size=5&sort=id,DESC
-    @GetMapping(value = "v2/nazwisko/{nazwisko}/plec/{plec}", params = {"page", "size", "sort"})
+    @GetMapping(value = "/v2/nazwisko/{nazwisko}/plec/{plec}", params = {"page", "size", "sort"})
     List<Student> getStudentsByNazwiskoAndPlecWithPaginationAndSorting(@PathVariable String nazwisko,
                                                                        @PathVariable String plec,
                                                                        @RequestParam("page") int page,
@@ -49,7 +49,7 @@ public class StudentAPI {
     }
 
     //http://localhost:8083/uczelnia/studenci/nazwiskoPrefix/MI
-    @GetMapping("nazwiskoPrefix/{nazwiskoPrefix}")
+    @GetMapping("/nazwiskoPrefix/{nazwiskoPrefix}")
     List<Student> getStudentsByNazwiskoPrefix(@PathVariable String nazwiskoPrefix) {
         nazwiskoPrefix = nazwiskoPrefix + "%";
         return studentRepository.findByNazwiskoLikeIgnoreCase(nazwiskoPrefix);
@@ -63,7 +63,7 @@ public class StudentAPI {
 
     //Delete!!!
     //http://localhost:8083/uczelnia/studenci/deleteStudentById/id/1
-    @DeleteMapping(value = "deleteStudentById/id/{id}")
+    @DeleteMapping(value = "/deleteStudentById/id/{id}")
     void deleteOcenaById(@PathVariable int id) {
         studentRepository.deleteById(id);
     }
